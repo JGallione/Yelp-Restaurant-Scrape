@@ -15,10 +15,15 @@ for item in raw_Countylists:
         countylists.append(item)
     else:
         pass
+# ^ raw_Countylists is from County_Muni_Lists.py. It is defined as the Gobals() for that file.
+#It then checks each var to see if the name contains "Muni"
+#For this reason new counties should be added with the naming convention "CountyName"_Muni_List = ["muni1", "muni2", "muni3"]
 
 questions = [inquirer.List('Search Area', message="Please Choose a County", choices = countylists)]
 City_County = inquirer.prompt(questions)
 print (City_County)
+# ^ Inquirer is a required library. This provides the user a simple pick and choose method...
+#...for search
 
 City_County_Confirm = input("Confirm Name of Search Area: ")
 if City_County_Confirm in raw_Countylists:
@@ -26,10 +31,17 @@ if City_County_Confirm in raw_Countylists:
 else:
     print("ERROR")
     sys.exit()
+# ^ Gets user to confirm the search area and check to see if that area is defined 
+#Again these should be defined as array in County_Muni_Lists.py 
 
 Block_Number = input("Please Enter Block Number (list above is an array): ")
+# ^ Block number is getting the user to choose where in the county to begin
+#ie: what number municipality in the array
+
 CSVNAME_input = input("Please Name the CSV File: ")
 CSVNAME = str(CSVNAME_input)+".csv" 
+# ^ Gets user to name or define which csv file to write to 
+
 Start_Time = time.time()
 #--------------------------------------#
 def get_restaurant_links(Search_Area):
@@ -50,6 +62,9 @@ def get_restaurant_links(Search_Area):
         Page_Number += 10
     print("Pages Loaded")
     return(Restaurant_Links)
+# ^ some notes
+#
+#
 
 def get_restaurant_data(RLinks):
     Full_Data_Array = []
