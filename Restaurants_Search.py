@@ -62,9 +62,9 @@ def get_restaurant_links(Search_Area):
         Page_Number += 10
     print("Pages Loaded")
     return(Restaurant_Links)
-# ^ some notes
-#
-#
+# ^ This function checks 24 pages of results for a given municipality (10 results per page)
+#It then appends Restaurant_Links with the link to each results yelp page
+#Function returns an array full of links to each restaurant in a given municipality 
 
 def get_restaurant_data(RLinks):
     Full_Data_Array = []
@@ -117,6 +117,8 @@ def get_restaurant_data(RLinks):
         Full_Data_Array.append(Res_Data)
         b += 1
     return(Full_Data_Array)
+# ^ This function goes through the array of restaurant links... 
+#...and returns the Name, Type, Address, Phone Number, and Website 
 
 def run(Muni_List):
     print (len(Muni_List))
@@ -129,7 +131,11 @@ def run(Muni_List):
             mywriter.writerows(get_restaurant_data(get_restaurant_links(Muni_List[i])))
         clean_csv(CSVNAME)
         i += 1
+# ^ This function adds the scraped data to the named csv file
+
 #--------------------------------------#
 run(raw_Countylists[City_County_Confirm])
+# ^ Running the functions
 #--------------------------------------#
+
 print("--- %s seconds ---" % (time.time() - Start_Time))
