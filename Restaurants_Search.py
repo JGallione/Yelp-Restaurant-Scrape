@@ -76,7 +76,7 @@ def get_restaurant_data(RLinks):
         soup = BeautifulSoup(response.read(), "lxml")
         Res_Data = []
 
-        for item in soup.find_all("h1", {"class" : "css-m7s7xv"}):
+        for item in soup.find_all("h1", {"class" : "css-yin5a8"}):#css-m7s7xv
             Res_Name = item.text
             Res_Data.append(Res_Name)
             print(Res_Name)
